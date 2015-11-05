@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -335,8 +336,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="79" height="42"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idp-Ip-IhM">
-                                                    <rect key="frame" x="17" y="10" width="45" height="21"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Users_Selected" translatesAutoresizingMaskIntoConstraints="NO" id="HXJ-kF-etG">
+                                                    <rect key="frame" x="28" y="9" width="24" height="24"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="HXJ-kF-etG" secondAttribute="height" multiplier="1:1" id="13H-la-VDg"/>
+                                                        <constraint firstAttribute="height" constant="24" id="GeH-fJ-VEt"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idp-Ip-IhM">
+                                                    <rect key="frame" x="17" y="12" width="45" height="20"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -348,12 +357,17 @@
                                         </view>
                                         <animations/>
                                         <constraints>
+                                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="HXJ-kF-etG" secondAttribute="trailing" constant="8" id="73k-x3-Azr"/>
+                                            <constraint firstItem="HXJ-kF-etG" firstAttribute="centerY" secondItem="aWZ-BZ-wgL" secondAttribute="centerY" id="FC5-xB-QJM"/>
                                             <constraint firstItem="Idp-Ip-IhM" firstAttribute="leading" secondItem="aWZ-BZ-wgL" secondAttribute="leadingMargin" constant="9" id="bwc-bv-dWP"/>
-                                            <constraint firstAttribute="centerX" secondItem="Idp-Ip-IhM" secondAttribute="centerX" constant="0.5" id="pih-0U-0bL"/>
+                                            <constraint firstItem="HXJ-kF-etG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aWZ-BZ-wgL" secondAttribute="leadingMargin" constant="8" id="hcN-cI-MEu"/>
+                                            <constraint firstItem="HXJ-kF-etG" firstAttribute="centerX" secondItem="aWZ-BZ-wgL" secondAttribute="centerX" id="kzd-GJ-iG4"/>
+                                            <constraint firstAttribute="centerX" secondItem="Idp-Ip-IhM" secondAttribute="centerX" id="pih-0U-0bL"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="Idp-Ip-IhM" secondAttribute="trailing" constant="9" id="vqj-Pf-Lgc"/>
-                                            <constraint firstAttribute="centerY" secondItem="Idp-Ip-IhM" secondAttribute="centerY" constant="0.5" id="zfA-qf-esp"/>
+                                            <constraint firstAttribute="centerY" secondItem="Idp-Ip-IhM" secondAttribute="centerY" id="zfA-qf-esp"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="imageView" destination="HXJ-kF-etG" id="80A-NN-hRT"/>
                                             <outlet property="label" destination="Idp-Ip-IhM" id="mtZ-b6-rE0"/>
                                         </connections>
                                     </collectionViewCell>
@@ -523,6 +537,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Users_Selected" width="48" height="48"/>
         <image name="icon_bar" width="30" height="30"/>
         <image name="icon_button" width="30" height="30"/>
         <image name="icon_segmented" width="30" height="30"/>

@@ -190,15 +190,20 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     XLButtonBarViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    if (!cell){
-        cell = [[XLButtonBarViewCell alloc] initWithFrame:CGRectMake(0, 0, 50, self.buttonBarView.frame.size.height)];
-    }
     NSAssert([cell isKindOfClass:[XLButtonBarViewCell class]], @"UICollectionViewCell should be or extend XLButtonBarViewCell");
     XLButtonBarViewCell * buttonBarCell = (XLButtonBarViewCell *)cell;
     UIViewController<XLPagerTabStripChildItem> * childController =   [self.pagerTabStripChildViewControllers objectAtIndex:indexPath.item];
     
     [buttonBarCell.label setText:[childController titleForPagerTabStripViewController:self]];
-    
+
+    if ([childController respondsToSelector:@selector(imageForPagerTabStripViewController:)])
+    {
+        buttonBarCell.imageView.image = [childController imageForPagerTabStripViewController:self];
+    }
+    else
+    {
+        buttonBarCell.imageView.image = nil;
+    }
     
     if (self.isProgressiveIndicator) {
         if (self.changeCurrentIndexProgressiveBlock) {

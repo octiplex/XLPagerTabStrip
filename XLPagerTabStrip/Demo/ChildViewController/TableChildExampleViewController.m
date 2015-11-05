@@ -106,7 +106,7 @@ NSString *const kCellIdentifier = @"PostCell";
 
 -(NSString *)titleForPagerTabStripViewController:(XLPagerTabStripViewController *)pagerTabStripViewController
 {
-    return @"Table View";
+    return @"";
 }
 
 -(UIColor *)colorForPagerTabStripViewController:(XLPagerTabStripViewController *)pagerTabStripViewController
@@ -114,6 +114,10 @@ NSString *const kCellIdentifier = @"PostCell";
     return [UIColor whiteColor];
 }
 
+- (UIImage *)imageForPagerTabStripViewController:(XLPagerTabStripViewController *)pagerTabStripViewController
+{
+    return [UIImage imageNamed:@"Users_Unselected"];
+}
 
 #pragma mark - Helpers
 

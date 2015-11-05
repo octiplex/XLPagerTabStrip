@@ -61,7 +61,7 @@
 
 -(NSString *)titleForPagerTabStripViewController:(XLPagerTabStripViewController *)pagerTabStripViewController
 {
-    return @"View";
+    return @"View with long title";
 }
 
 -(UIColor *)colorForPagerTabStripViewController:(XLPagerTabStripViewController *)pagerTabStripViewController

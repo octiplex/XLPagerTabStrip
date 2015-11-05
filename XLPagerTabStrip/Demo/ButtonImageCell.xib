@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="XLButtonBarViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNl-PB-VNp">
+                    <rect key="frame" x="29" y="11" width="42" height="20"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Users_Selected" translatesAutoresizingMaskIntoConstraints="NO" id="cbD-Nz-klV">
+                    <rect key="frame" x="38" y="8" width="24" height="24"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="cbD-Nz-klV" secondAttribute="height" multiplier="1:1" id="FL0-Sl-Hud"/>
+                        <constraint firstAttribute="height" constant="24" id="OBD-qV-BF0"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="cbD-Nz-klV" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="4gC-hF-Ecp"/>
+                <constraint firstItem="cbD-Nz-klV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="68a-8r-xeq"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MNl-PB-VNp" secondAttribute="trailing" constant="8" id="bih-Sj-4YV"/>
+                <constraint firstItem="MNl-PB-VNp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="iLr-22-vFA"/>
+                <constraint firstItem="cbD-Nz-klV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="w0u-7Q-KfD"/>
+                <constraint firstItem="MNl-PB-VNp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="xlk-O2-gZr"/>
+                <constraint firstItem="MNl-PB-VNp" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="zhp-Z9-cbQ"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cbD-Nz-klV" secondAttribute="trailing" constant="8" id="zvT-Ev-qs6"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imageView" destination="cbD-Nz-klV" id="maD-OC-Gpb"/>
+                <outlet property="label" destination="MNl-PB-VNp" id="LwM-JE-IeJ"/>
+            </connections>
+            <point key="canvasLocation" x="204.5" y="444"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Users_Selected" width="48" height="48"/>
+    </resources>
+</document>

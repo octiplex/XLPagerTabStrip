@@ -42,7 +42,7 @@
     [self.buttonBarView.selectedBar setBackgroundColor:[UIColor orangeColor]];
     [self.navigationController.navigationBar addSubview:self.buttonBarView];
     
-    [self.buttonBarView registerNib:[UINib nibWithNibName:@"ButtonCell" bundle:[NSBundle bundleForClass:[self class]]]  forCellWithReuseIdentifier:@"Cell"];
+    [self.buttonBarView registerNib:[UINib nibWithNibName:@"ButtonImageCell" bundle:[NSBundle bundleForClass:[self class]]]  forCellWithReuseIdentifier:@"Cell"];
     
     self.changeCurrentIndexProgressiveBlock = ^void(XLButtonBarViewCell *oldCell, XLButtonBarViewCell *newCell, CGFloat progressPercentage, BOOL changeCurrentIndex, BOOL animated){
         if (changeCurrentIndex) {

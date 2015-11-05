@@ -34,6 +34,7 @@
 		66CA35B41A8D174900564221 /* XLTwitterPagerTabStripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CA35B31A8D174900564221 /* XLTwitterPagerTabStripViewController.m */; };
 		B9826A152B3157A89CEEAD94 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0329B4EA109D6C0B21EAE43 /* libPods.a */; };
 		C262204E1AD44A4D002E5226 /* TwitterExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C262204D1AD44A4D002E5226 /* TwitterExampleViewController.m */; };
+		E37FBC5F1BEB748400D1C519 /* ButtonImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E37FBC5E1BEB748400D1C519 /* ButtonImageCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		8FE36F63359C9745E83001CC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C262204C1AD44A4D002E5226 /* TwitterExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterExampleViewController.h; sourceTree = "<group>"; };
 		C262204D1AD44A4D002E5226 /* TwitterExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterExampleViewController.m; sourceTree = "<group>"; };
+		E37FBC5E1BEB748400D1C519 /* ButtonImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonImageCell.xib; sourceTree = "<group>"; };
 		F0329B4EA109D6C0B21EAE43 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -198,6 +200,7 @@
 				28B63ABF1A45A4C500225C66 /* PagerSlidingTabStrip.gif */,
 				28B63AC21A45A4C500225C66 /* Storyboard.storyboard */,
 				6624E4581AEEDB600076274D /* ButtonCell.xib */,
+				E37FBC5E1BEB748400D1C519 /* ButtonImageCell.xib */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				28B63AC91A45A4C500225C66 /* PagerSlidingTabStrip.gif in Resources */,
 				6624E4591AEEDB600076274D /* ButtonCell.xib in Resources */,
 				28B63A971A459F5900225C66 /* Images.xcassets in Resources */,
+				E37FBC5F1BEB748400D1C519 /* ButtonImageCell.xib in Resources */,
 				28B63ACB1A45A4C500225C66 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,6 +586,7 @@
 				INFOPLIST_FILE = XLPagerTabStrip/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.octiplex.XLPagerTabStrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -596,6 +601,7 @@
 				INFOPLIST_FILE = XLPagerTabStrip/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.octiplex.XLPagerTabStrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

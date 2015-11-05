@@ -191,13 +191,23 @@
     [self.pagerTabStripChildViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSAssert([obj conformsToProtocol:@protocol(XLPagerTabStripChildItem)], @"child view controller must conform to XLPagerTabStripChildItem");
         UIViewController<XLPagerTabStripChildItem> * childViewController = (UIViewController<XLPagerTabStripChildItem> *)obj;
-        NSString * childText = [childViewController respondsToSelector:@selector(titleForPagerTabStripViewController:)] ? [childViewController titleForPagerTabStripViewController:self] : NSStringFromClass([obj class]);
-        UILabel *navTitleLabel = [self createNewLabelWithText:childText];
-        [navTitleLabel setAlpha: self.currentIndex == idx ? 1 : 0];
-        UIColor * childTextColor = [childViewController respondsToSelector:@selector(colorForPagerTabStripViewController:)] ? [childViewController colorForPagerTabStripViewController:self] : [UIColor whiteColor];;
-        [navTitleLabel setTextColor:childTextColor];
-        [_navigationScrollView addSubview:navTitleLabel];
-        [_navigationItemsViews addObject:navTitleLabel];
+        UIView* navView = nil;
+        if ([childViewController respondsToSelector:@selector(imageForPagerTabStripViewController:)]){
+            
+            UIImageView* imageView = [[UIImageView alloc] initWithImage:[childViewController imageForPagerTabStripViewController:self]];
+            navView = imageView;
+        }
+        else
+        {
+            NSString * childText = [childViewController respondsToSelector:@selector(titleForPagerTabStripViewController:)] ? [childViewController titleForPagerTabStripViewController:self] : NSStringFromClass([obj class]);
+            UILabel *navTitleLabel = [self createNewLabelWithText:childText];
+            UIColor * childTextColor = [childViewController respondsToSelector:@selector(colorForPagerTabStripViewController:)] ? [childViewController colorForPagerTabStripViewController:self] : [UIColor whiteColor];;
+            [navTitleLabel setTextColor:childTextColor];
+            navView = navTitleLabel;
+        }
+        [navView setAlpha: self.currentIndex == idx ? 1 : 0];
+        [_navigationScrollView addSubview:navView];
+        [_navigationItemsViews addObject:navView];
     }];
 }
 
@@ -211,18 +221,24 @@
     CGFloat distance = [self getDistanceValue];
     BOOL isPortrait = UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation);
     CGFloat labelHeighSpace = isPortrait ? 34: 25;
-    [self.navigationItemsViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    [self.navigationItemsViews enumerateObjectsUsingBlock:^(UIView* obj, NSUInteger idx, BOOL *stop) {
         int index = (int)idx;
-        UILabel *label = (UILabel *)obj;
-        if (updateAlpha){
-            [label setAlpha:self.currentIndex == idx ? 1 : 0];
+        CGSize viewSize = CGSizeMake(labelHeighSpace, labelHeighSpace);
+        if ([obj isKindOfClass:[UILabel class]])
+        {
+            UILabel *label = (UILabel *)obj;
+            if (updateAlpha){
+                [label setAlpha:self.currentIndex == idx ? 1 : 0];
+            }
+            label.font = isPortrait ? self.portraitTitleFont : self.landscapeTitleFont;
+            viewSize = [self getLabelSize:label];
         }
-        label.font = isPortrait ? self.portraitTitleFont : self.landscapeTitleFont;
-        CGSize viewSize = [self getLabelSize:label];
+        
         CGFloat originX = (distance - viewSize.width/2) + index * distance;
         CGFloat originY = (labelHeighSpace - viewSize.height) / 2;
-        label.frame = (CGRect){originX, originY + 2, viewSize.width, viewSize.height};
-        label.tag = index;
+        obj.frame = (CGRect){originX, originY + 2, viewSize.width, viewSize.height};
+        obj.tag = index;
+        
     }];
     
     UIAccelerationValue xOffset = distance * self.currentIndex;
