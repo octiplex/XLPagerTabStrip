@@ -1,6 +1,7 @@
 XLPagerTabStrip
 ---------------
 
+
 By [XMARTLABS](http://xmartlabs.com).
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/xmartlabs/XLPagerTabStrip/blob/master/LICENSE)
