@@ -40,6 +40,7 @@
 @optional
 
 - (UIImage *)imageForPagerTabStripViewController:(XLPagerTabStripViewController *)pagerTabStripViewController;
+- (UIImage *)selectedImageForPagerTabStripViewController:(XLPagerTabStripViewController *)pagerTabStripViewController;
 - (UIColor *)colorForPagerTabStripViewController:(XLPagerTabStripViewController *)pagerTabStripViewController;
 
 @end

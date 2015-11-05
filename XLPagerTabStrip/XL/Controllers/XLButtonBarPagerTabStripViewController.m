@@ -124,9 +124,11 @@
             direction = XLPagerTabStripDirectionRight;
         }
         [self.buttonBarView moveToIndex:toIndex animated:YES swipeDirection:direction pagerScroll:XLPagerScrollYES];
+        XLButtonBarViewCell *oldCell = (XLButtonBarViewCell*)[self.buttonBarView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex != fromIndex ? fromIndex : toIndex inSection:0]];
+        XLButtonBarViewCell *newCell = (XLButtonBarViewCell*)[self.buttonBarView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex inSection:0]];
+        [self updateImageForCell:oldCell index:self.currentIndex != fromIndex ? fromIndex : toIndex selected:NO];
+        [self updateImageForCell:newCell index:self.currentIndex selected:YES];
         if (self.changeCurrentIndexBlock) {
-            XLButtonBarViewCell *oldCell = (XLButtonBarViewCell*)[self.buttonBarView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex != fromIndex ? fromIndex : toIndex inSection:0]];
-            XLButtonBarViewCell *newCell = (XLButtonBarViewCell*)[self.buttonBarView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex inSection:0]];
             self.changeCurrentIndexBlock(oldCell, newCell, YES);
         }
     }
@@ -143,11 +145,40 @@
                                   toIndex:toIndex
                    withProgressPercentage:progressPercentage pagerScroll:XLPagerScrollYES];
         
+        XLButtonBarViewCell *oldCell = (XLButtonBarViewCell*)[self.buttonBarView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex != fromIndex ? fromIndex : toIndex inSection:0]];
+        XLButtonBarViewCell *newCell = (XLButtonBarViewCell*)[self.buttonBarView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex inSection:0]];
+        [self updateImageForCell:oldCell index:self.currentIndex != fromIndex ? fromIndex : toIndex selected:NO];
+        [self updateImageForCell:newCell index:self.currentIndex selected:YES];
         if (self.changeCurrentIndexProgressiveBlock) {
-            XLButtonBarViewCell *oldCell = (XLButtonBarViewCell*)[self.buttonBarView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex != fromIndex ? fromIndex : toIndex inSection:0]];
-            XLButtonBarViewCell *newCell = (XLButtonBarViewCell*)[self.buttonBarView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex inSection:0]];
             self.changeCurrentIndexProgressiveBlock(oldCell, newCell, progressPercentage, indexWasChanged, YES);
         }
+    }
+}
+
+- (void)updateImageForCell:(XLButtonBarViewCell*)cell index:(NSInteger)index selected:(BOOL)isSelected
+{
+    UIViewController<XLPagerTabStripChildItem> * childController = [self.pagerTabStripChildViewControllers objectAtIndex:index];
+    UIImage* normalImage = nil;
+    
+    if ([childController respondsToSelector:@selector(imageForPagerTabStripViewController:)])
+    {
+        normalImage = [childController imageForPagerTabStripViewController:self];
+    }
+    
+    if (isSelected)
+    {
+        if ([childController respondsToSelector:@selector(selectedImageForPagerTabStripViewController:)])
+        {
+            cell.imageView.image = [childController selectedImageForPagerTabStripViewController:self];
+        }
+        else
+        {
+            cell.imageView.image = normalImage;
+        }
+    }
+    else
+    {
+        cell.imageView.image = normalImage;
     }
 }
 
@@ -165,6 +196,8 @@
     
     XLButtonBarViewCell *oldCell = (XLButtonBarViewCell*)[self.buttonBarView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentIndex inSection:0]];
     XLButtonBarViewCell *newCell = (XLButtonBarViewCell*)[self.buttonBarView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:0]];
+    [self updateImageForCell:oldCell index:self.currentIndex selected:NO];
+    [self updateImageForCell:newCell index:indexPath.item selected:YES];
     if (self.isProgressiveIndicator) {
         if (self.changeCurrentIndexProgressiveBlock) {
             self.changeCurrentIndexProgressiveBlock(oldCell, newCell, 1, YES, YES);
@@ -196,14 +229,7 @@
     
     [buttonBarCell.label setText:[childController titleForPagerTabStripViewController:self]];
 
-    if ([childController respondsToSelector:@selector(imageForPagerTabStripViewController:)])
-    {
-        buttonBarCell.imageView.image = [childController imageForPagerTabStripViewController:self];
-    }
-    else
-    {
-        buttonBarCell.imageView.image = nil;
-    }
+    [self updateImageForCell:buttonBarCell index:indexPath.item selected:NO];
     
     if (self.isProgressiveIndicator) {
         if (self.changeCurrentIndexProgressiveBlock) {

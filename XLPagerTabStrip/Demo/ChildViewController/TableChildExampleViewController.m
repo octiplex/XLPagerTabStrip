@@ -119,6 +119,11 @@ NSString *const kCellIdentifier = @"PostCell";
     return [UIImage imageNamed:@"Users_Unselected"];
 }
 
+- (UIImage *)selectedImageForPagerTabStripViewController:(XLPagerTabStripViewController *)pagerTabStripViewController
+{
+    return [UIImage imageNamed:@"Users_Selected"];
+}
+
 #pragma mark - Helpers
 
 #define SECONDS_IN_A_MINUTE 60
