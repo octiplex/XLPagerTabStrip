@@ -75,6 +75,9 @@
     UICollectionViewFlowLayout * flowLayout = (id)self.buttonBarView.collectionViewLayout;
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     [self.buttonBarView setShowsHorizontalScrollIndicator:NO];
+    // Enable self sizing cells
+    flowLayout.estimatedItemSize = CGSizeMake(44, 40);
+    flowLayout.itemSize = CGSizeZero;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -102,8 +105,6 @@
     UICollectionViewFlowLayout * flowLayout = [[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     [flowLayout setSectionInset:UIEdgeInsetsMake(0, 35, 0, 35)];
-    // Enable self sizing cells
-    flowLayout.estimatedItemSize = CGSizeMake(44, 44);
     _buttonBarView = [[XLButtonBarView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44.0f) collectionViewLayout:flowLayout];
     _buttonBarView.backgroundColor = [UIColor orangeColor];
     _buttonBarView.selectedBar.backgroundColor = [UIColor blackColor];
