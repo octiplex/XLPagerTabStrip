@@ -75,9 +75,6 @@
     UICollectionViewFlowLayout * flowLayout = (id)self.buttonBarView.collectionViewLayout;
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     [self.buttonBarView setShowsHorizontalScrollIndicator:NO];
-    // Enable self sizing cells
-    flowLayout.estimatedItemSize = CGSizeMake(44, 40);
-    flowLayout.itemSize = CGSizeZero;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -111,6 +108,28 @@
     _buttonBarView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     return _buttonBarView;
 }
+
+#pragma merk - UICollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIViewController<XLPagerTabStripChildItem> * childController =   [self.pagerTabStripChildViewControllers objectAtIndex:indexPath.item];
+    if ([childController respondsToSelector:@selector(imageForPagerTabStripViewController:)])
+    {
+        UIImage* image = [childController imageForPagerTabStripViewController:self];
+        
+        return CGSizeMake(image.size.width + (self.buttonBarView.leftRightMargin * 2), collectionView.frame.size.height);
+    }
+    
+    UILabel * label = [[UILabel alloc] init];
+    [label setTranslatesAutoresizingMaskIntoConstraints:NO];
+    label.font = self.buttonBarView.labelFont;
+    [label setText:[childController titleForPagerTabStripViewController:self]];
+    CGSize labelSize = [label intrinsicContentSize];
+    
+    return CGSizeMake(labelSize.width + (self.buttonBarView.leftRightMargin * 2), collectionView.frame.size.height);
+}
+
 
 #pragma mark - XLPagerTabStripViewControllerDelegate
 
