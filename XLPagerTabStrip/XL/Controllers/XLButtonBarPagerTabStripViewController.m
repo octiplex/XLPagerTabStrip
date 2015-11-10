@@ -176,6 +176,8 @@
 
 - (void)updateImageForCell:(XLButtonBarViewCell*)cell index:(NSInteger)index selected:(BOOL)isSelected
 {
+    if (!cell) return;
+    
     UIViewController<XLPagerTabStripChildItem> * childController = [self.pagerTabStripChildViewControllers objectAtIndex:index];
     UIImage* normalImage = nil;
     
