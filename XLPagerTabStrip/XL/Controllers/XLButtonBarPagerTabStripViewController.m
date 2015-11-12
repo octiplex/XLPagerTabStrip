@@ -230,7 +230,17 @@
         }
     }
     
-    [self moveToViewControllerAtIndex:indexPath.item];
+    [super moveToViewControllerAtIndex:indexPath.item animated:YES];
+}
+
+- (void)moveToViewControllerAtIndex:(NSUInteger)index animated:(BOOL)animated
+{
+    if ( !animated || !self.isViewLoaded || !self.view.window ) {
+        [super moveToViewControllerAtIndex:index animated:animated];
+    }
+    else {
+        [self collectionView:self.buttonBarView didSelectItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+    }
 }
 
 #pragma merk - UICollectionViewDataSource
