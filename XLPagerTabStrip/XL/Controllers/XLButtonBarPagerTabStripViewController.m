@@ -179,6 +179,9 @@
     if (!cell) return;
     
     UIViewController<XLPagerTabStripChildItem> * childController = [self.pagerTabStripChildViewControllers objectAtIndex:index];
+#ifdef DEBUG
+    NSLog(@"%s - updating image of cell %ld (selected: %@); %@", __PRETTY_FUNCTION__,(long)index, isSelected ? @"YES" : @"NO", NSStringFromClass(childController.class));
+#endif
     UIImage* normalImage = nil;
     
     if ([childController respondsToSelector:@selector(imageForPagerTabStripViewController:)])
@@ -209,9 +212,9 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     //There's nothing to do if we select the current selected tab
-	if (indexPath.item == self.currentIndex)
-		return;
-	
+    if (indexPath.item == self.currentIndex)
+        return;
+    
     [self.buttonBarView moveToIndex:indexPath.item animated:YES swipeDirection:XLPagerTabStripDirectionNone pagerScroll:XLPagerScrollYES];
     self.shouldUpdateButtonBarView = NO;
     
@@ -249,7 +252,7 @@
     UIViewController<XLPagerTabStripChildItem> * childController =   [self.pagerTabStripChildViewControllers objectAtIndex:indexPath.item];
     
     [buttonBarCell.label setText:[childController titleForPagerTabStripViewController:self]];
-
+    
     [self updateImageForCell:buttonBarCell index:indexPath.item selected:NO];
     
     if (self.isProgressiveIndicator) {
