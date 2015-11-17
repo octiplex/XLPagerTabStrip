@@ -259,8 +259,8 @@
     UIViewController<XLPagerTabStripChildItem> * childController =   [self.pagerTabStripChildViewControllers objectAtIndex:indexPath.item];
     
     [buttonBarCell.label setText:[childController titleForPagerTabStripViewController:self]];
-
-    [self updateImageForCell:buttonBarCell index:indexPath.item selected:NO];
+    
+    [self updateImageForCell:buttonBarCell index:indexPath.item selected:(self.currentIndex == indexPath.item)];
     
     if (self.isProgressiveIndicator) {
         if (self.changeCurrentIndexProgressiveBlock) {
