@@ -6,6 +6,7 @@ By [XMARTLABS](http://xmartlabs.com).
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/xmartlabs/XLPagerTabStrip/blob/master/LICENSE)
 [![version](https://img.shields.io/badge/pod-2.0.0-blue.svg)](https://github.com/xmartlabs/XLPagerTabStrip/releases)
++[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 Android [PagerTabStrip](http://developer.android.com/reference/android/support/v4/view/PagerTabStrip.html) for iOS!
 
