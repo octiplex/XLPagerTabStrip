@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E3AB45D71C17362100D0ED8F"
-               BuildableName = "XLPagerTabStrip iOS.framework"
+               BuildableName = "XLPagerTabStrip.framework"
                BlueprintName = "XLPagerTabStrip iOS"
                ReferencedContainer = "container:XLPagerTabStrip.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E3AB45D71C17362100D0ED8F"
-            BuildableName = "XLPagerTabStrip iOS.framework"
+            BuildableName = "XLPagerTabStrip.framework"
             BlueprintName = "XLPagerTabStrip iOS"
             ReferencedContainer = "container:XLPagerTabStrip.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E3AB45D71C17362100D0ED8F"
-            BuildableName = "XLPagerTabStrip iOS.framework"
+            BuildableName = "XLPagerTabStrip.framework"
             BlueprintName = "XLPagerTabStrip iOS"
             ReferencedContainer = "container:XLPagerTabStrip.xcodeproj">
          </BuildableReference>
